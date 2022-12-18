@@ -63,7 +63,7 @@ for index, symptom in enumerate(x):
 
 def getDescription():
     global description_list
-    with open('MasterData/symptom_Description.csv') as csv_file:
+    with open('./MasterData/symptom_Description.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
         for row in csv_reader:
