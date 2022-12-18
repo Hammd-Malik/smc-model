@@ -16,8 +16,8 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 app = Flask(__name__)
 
 
-training = pd.read_csv('Training.csv')
-testing= pd.read_csv('Testing.csv')
+training = pd.read_csv('/Training.csv')
+testing= pd.read_csv('/Testing.csv')
 cols= training.columns
 cols= cols[:-1]
 x = training[cols]
@@ -109,7 +109,7 @@ def check_pattern(dis_list,inp):
 
 
 def sec_predict(symptoms_exp):
-    df = pd.read_csv('Training.csv')
+    df = pd.read_csv('/Training.csv')
     X = df.iloc[:, :-1]
     y = df['prognosis']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=20)
