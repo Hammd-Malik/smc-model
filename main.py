@@ -15,10 +15,12 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 app = Flask(__name__)
+absolute_path = os.path.dirname(__file__)
+print(absolute_path)
 
 
-training = pd.read_csv('/var/app/Data/Training.csv')
-testing= pd.read_csv('/var/app/Data/Testing.csv')
+training = pd.read_csv('Data/Training.csv')
+testing= pd.read_csv('Data/Testing.csv')
 cols= training.columns
 cols= cols[:-1]
 x = training[cols]
@@ -64,7 +66,7 @@ for index, symptom in enumerate(x):
 
 def getDescription():
     global description_list
-    with open('/var/app/MasterData/symptom_Description.csv') as csv_file:
+    with open('MasterData/symptom_Description.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
         for row in csv_reader:
@@ -74,7 +76,7 @@ def getDescription():
 
 def getSeverityDict():
     global severityDictionary
-    with open('/var/app/MasterData/symptom_severity.csv') as csv_file:
+    with open('MasterData/symptom_severity.csv') as csv_file:
 
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
@@ -88,7 +90,7 @@ def getSeverityDict():
 
 def getprecautionDict():
     global precautionDictionary
-    with open('/var/app/MasterData/symptom_precaution.csv') as csv_file:
+    with open('MasterData/symptom_precaution.csv') as csv_file:
 
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
@@ -110,7 +112,7 @@ def check_pattern(dis_list,inp):
 
 
 def sec_predict(symptoms_exp):
-    df = pd.read_csv('/var/app/Data/Training.csv')
+    df = pd.read_csv('Data/Training.csv')
     X = df.iloc[:, :-1]
     y = df['prognosis']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=20)
