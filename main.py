@@ -8,13 +8,14 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC
+import os
 import csv
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 app = Flask(__name__)
-
+print(os.path.abspath())
 
 training = pd.read_csv('Training.csv')
 testing= pd.read_csv('Testing.csv')
