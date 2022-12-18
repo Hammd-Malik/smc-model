@@ -16,8 +16,8 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 app = Flask(__name__)
 
 
-training = pd.read_csv('/Training.csv')
-testing= pd.read_csv('/Testing.csv')
+training = pd.read_csv('Training.csv')
+testing= pd.read_csv('Testing.csv')
 cols= training.columns
 cols= cols[:-1]
 x = training[cols]
