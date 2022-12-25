@@ -15,8 +15,8 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 app = Flask(__name__)
-cwd = os.getcwd()
-print(cwd)
+abs = os.path.abspath('main.py')
+print(abs)
 
 training = pd.read_csv('Data/Training.csv')
 testing= pd.read_csv('Data/Testing.csv')
