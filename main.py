@@ -11,10 +11,12 @@ from sklearn.svm import SVC
 import csv
 import warnings
 import os
+from flask_cors import CORS, cross_origin
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 app = Flask(__name__)
+CORS(app)
 
 training = pd.read_csv('Data/Training.csv')
 testing= pd.read_csv('Data/Testing.csv')
@@ -232,9 +234,9 @@ getprecautionDict()
 
 # api for geting main symptom and asking questions
 @app.route('/taketest', methods=['POST'])
+@cross_origin()
 def takeTest():
     req_data = request.get_json()
-    req_data.headers.add('Access-Control-Allow-Origin', '*')
     p_days = req_data['days']
     p_di = req_data['symptom']
     valid_disease = p_di.replace(' ','_')
@@ -247,9 +249,9 @@ def takeTest():
 
 # api for checking the symptoms experinced and returning the disease and precautions
 @app.route('/predict-disease', methods=['POST'])
+@cross_origin()
 def predictDisease():
     req_data = request.get_json()
-    req_data.headers.add('Access-Control-Allow-Origin', '*')
     symptoms_exp = req_data['symptom_exp']
     present_disease = req_data['present_disease']
 
