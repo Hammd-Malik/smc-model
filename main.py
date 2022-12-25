@@ -15,8 +15,6 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 app = Flask(__name__)
-abs = os.path.abspath('Data/Training.csv')
-print(abs)
 
 training = pd.read_csv('Data/Training.csv')
 testing= pd.read_csv('Data/Testing.csv')
@@ -260,4 +258,4 @@ def predictDisease():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
